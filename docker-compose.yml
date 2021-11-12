@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  grokk:
+    build: .
+    volumes:
+      - .:/Grokking_algorithms
+      - ~/.bash_history:/root/.bash_history
+      - bundle_cache:/bundle_cache
+    command: sh -c 'bundle check || bundle install'
+    environment:
+      BUNDLE_PATH: /bundle_cache
+      GEM_HOME: /bundle_cache
+      GEM_PATH: /bundle_cache
+
+volumes:
+  bundle_cache:
